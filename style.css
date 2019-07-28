@@ -11,6 +11,7 @@ body {
   align-items: center;
 }
 canvas {
+  cursor: pointer;
   display: block;
   margin: 25px;
   order: 2;
