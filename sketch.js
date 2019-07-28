@@ -4,6 +4,7 @@ let player2;
 let player;
 let h1;
 let start = false;
+let boleanArr = [];
 
 function setup() {
   createCanvas(300, 300);
@@ -32,8 +33,7 @@ function draw() {
 
   if (start) {
     board.drawBoard(currentPlayer, player1, player2);
-  
-      
+    patta();
     if (
       board.board[0][0].state !== "" &&
       board.board[0][0].state == board.board[1][0].state &&
@@ -185,14 +185,39 @@ function diagonale2() {
   );
 }
 
+function gamedraw() {
+  noLoop();
+  h2.innerText = "non ha vinto nessuno :) ";
+  currentPlayer = null;
+}
+
 function winner() {
   noLoop();
   if (currentPlayer === player1) {
-    h1.innerText = "vince giocatore 2";
+    h2.innerText = "vince giocatore 2";
     currentPlayer = player2;
   } else {
-    h1.innerText = "vince giocatore 1";
+    h2.innerText = "vince giocatore 1";
     currentPlayer = player1;
   }
   currentPlayer = null;
+}
+function patta() {
+  let bol;
+  for (let i = 0; i < board.board.length; i++) {
+    for (let j = 0; j < board.board.length; j++) {
+      if (board.board[i][j].state === "") {
+        bol = false;
+        return;
+      } else {
+        bol = true;
+        console.log(bol);
+      }
+    }
+  }
+  if (bol === true) {
+    h2.innerText = "E un pareggio!!!";
+    currentPlayer = null;
+    noLoop();
+  }
 }
