@@ -101,7 +101,7 @@ function draw() {
   }
 }
 
-function mousePressed(e) {
+function mouseClicked(e) {
   if (e.target.id === "defaultCanvas0") {
     for (let i = 0; i < board.board.length; i++) {
       for (let j = 0; j < board.board.length; j++) {
